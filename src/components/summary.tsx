@@ -4,11 +4,11 @@ import { DialogTrigger } from "./ui/dialog";
 import inOrbit from "../assets/inOrbit.svg";
 import { Progress, ProgressIndicator } from "./ui/progressBar";
 import { Separator } from "./ui/separator";
-import { OutlineButton } from "./ui/outlineButton";
 import { useQuery } from "@tanstack/react-query";
 import { getSummary } from "../http/getSummary";
 import dayjs from "dayjs";
 import ptBR from "dayjs/locale/pt-BR";
+import { PendingGoals } from "./pendingGoals";
 
 dayjs.locale(ptBR);
 export function Summary() {
@@ -63,22 +63,7 @@ export function Summary() {
 
       <Separator />
 
-      <div className="flex flex-wrap gap-3">
-        <OutlineButton>
-          <Plus className="size-4 text-zinc-600" />
-          Meditar
-        </OutlineButton>
-
-        <OutlineButton>
-          <Plus className="size-4 text-zinc-600" />
-          Praticar exercício
-        </OutlineButton>
-
-        <OutlineButton>
-          <Plus className="size-4 text-zinc-600" />
-          Nadar
-        </OutlineButton>
-      </div>
+      <PendingGoals />
 
       <div className="flex flex-col gap-6">
         <h2 className="text-xl font-medium">Sua semana</h2>
@@ -96,13 +81,15 @@ export function Summary() {
 
               <ul className="flex flex-col gap-3">
                 {goals.map((goal) => {
+                  const time = dayjs(goal.completedAt).format("HH:mm");
+
                   return (
                     <li key={goal.id} className="flex items-center gap-2">
                       <CheckCircle2 className=" size-4 text-pink-500" />
                       <span className="text-xs text-zinc-400">
                         Você completou “
                         <span className="text-zinc-100">{goal.title}</span>” às{" "}
-                        <span className="text-zinc-100">08:13h</span>
+                        <span className="text-zinc-100">{time}h</span>
                       </span>
                     </li>
                   );
