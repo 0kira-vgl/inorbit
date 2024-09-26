@@ -1,13 +1,6 @@
-import { X } from "lucide-react";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-import {
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-} from "./ui/dialog";
 import {
   RadioGroup,
   RadioGroupIndicator,
@@ -18,6 +11,12 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createGoal } from "../http/createGoals";
 import { useQueryClient } from "@tanstack/react-query";
+import {
+  SheetContent,
+  SheetClose,
+  SheetDescription,
+  SheetTitle,
+} from "@/components/ui/sheet";
 
 const createGoalForm = z.object({
   title: z.string().min(1, "Informe a atividade que deseja realizar"),
@@ -47,20 +46,17 @@ export function CreateGoal() {
   }
 
   return (
-    <DialogContent>
+    <SheetContent className="border-zinc-900 bg-zinc-950 w-[400px] lg:w-[540px]">
       <div className="flex flex-col gap-6 h-full">
         <div className="flex flex-col gap-3">
           <div className="flex items-center justify-between">
-            <DialogTitle>Cadastrar meta</DialogTitle>
-            <DialogClose>
-              <X className="size-5 text-zinc-600" />
-            </DialogClose>
+            <SheetTitle className="text-zinc-50">Cadastrar meta</SheetTitle>
           </div>
 
-          <DialogDescription>
+          <SheetDescription>
             Adicione atividades que te fazem bem e que você quer continuar
             praticando toda semana.
-          </DialogDescription>
+          </SheetDescription>
         </div>
 
         <form
@@ -69,7 +65,9 @@ export function CreateGoal() {
         >
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-2">
-              <Label htmlFor="title">Qual a atividade?</Label>
+              <Label htmlFor="title" className="text-zinc-50">
+                Qual a atividade?
+              </Label>
               <Input
                 id="title"
                 autoFocus
@@ -84,7 +82,7 @@ export function CreateGoal() {
               )}
             </div>
             <div className="flex flex-col gap-2">
-              <Label>Quantas vezes na semana?</Label>
+              <Label className="text-zinc-50">Quantas vezes na semana?</Label>
 
               <Controller
                 control={control}
@@ -158,15 +156,15 @@ export function CreateGoal() {
           </div>
 
           <div className="flex items-center gap-3">
-            <DialogClose asChild>
+            <SheetClose asChild>
               <Button type="button" variant="secondary" className="flex-1">
                 Fechar
               </Button>
-            </DialogClose>
+            </SheetClose>
             <Button className="flex-1">Salvar</Button>
           </div>
         </form>
       </div>
-    </DialogContent>
+    </SheetContent>
   );
 }

@@ -1,9 +1,9 @@
-import { Dialog } from "./components/ui/dialog";
 import { CreateGoal } from "./components/createGoal";
 import { Summary } from "./components/summary";
 import { EmptyGoals } from "./components/emptyGoals";
 import { useQuery } from "@tanstack/react-query";
 import { getSummary } from "./http/getSummary";
+import { Dialog } from "./components/ui/dialog";
 
 export function App() {
   const { data } = useQuery({

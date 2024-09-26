@@ -2,7 +2,7 @@ import logo from "../assets/logoInOrbit.svg";
 import letsStart from "../assets/letsStart.svg";
 import { Plus } from "lucide-react";
 import { Button } from "../components/ui/button";
-import { DialogTrigger } from "../components/ui/dialog";
+import { DialogTrigger } from "./ui/dialog";
 
 export function EmptyGoals() {
   return (

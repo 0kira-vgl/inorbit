@@ -1,6 +1,5 @@
 import { CheckCircle2, Plus } from "lucide-react";
 import { Button } from "./ui/button";
-import { DialogTrigger } from "./ui/dialog";
 import { Separator } from "./ui/separator";
 import { useQuery } from "@tanstack/react-query";
 import dayjs from "dayjs";
@@ -10,6 +9,7 @@ import { PendingGoals } from "./pendingGoals";
 import { Progress, ProgressIndicator } from "./ui/progressBar";
 
 import inOrbit from "../assets/inOrbit.svg";
+import { SheetTrigger } from "./ui/sheet";
 
 dayjs.locale(ptBR);
 
@@ -41,12 +41,12 @@ export function Summary() {
           </span>
         </div>
 
-        <DialogTrigger asChild>
+        <SheetTrigger asChild>
           <Button size="sm">
             <Plus className="size-4" />
             Cadastrar meta
           </Button>
-        </DialogTrigger>
+        </SheetTrigger>
       </div>
 
       <div className="flex flex-col gap-3">
