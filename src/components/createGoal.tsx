@@ -21,7 +21,7 @@ import { useQueryClient } from "@tanstack/react-query";
 
 const createGoalForm = z.object({
   title: z.string().min(1, "Informe a atividade que deseja realizar"),
-  desireWeeklyFrequency: z.coerce.number().min(1).max(7),
+  desiredWeeklyFrequency: z.coerce.number().min(1).max(7),
 });
 
 type CreateGoalForm = z.infer<typeof createGoalForm>;
@@ -37,7 +37,7 @@ export function CreateGoal() {
   async function handleCreateGoal(data: CreateGoalForm) {
     await createGoal({
       title: data.title,
-      desireWeeklyFrequency: data.desireWeeklyFrequency,
+      desiredWeeklyFrequency: data.desiredWeeklyFrequency,
     });
 
     queryClient.invalidateQueries({ queryKey: ["summary"] });
@@ -88,7 +88,7 @@ export function CreateGoal() {
 
               <Controller
                 control={control}
-                name="desireWeeklyFrequency"
+                name="desiredWeeklyFrequency"
                 defaultValue={3}
                 render={({ field }) => {
                   return (
