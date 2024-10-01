@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 import { useQuery } from "@tanstack/react-query";
 import dayjs from "dayjs";
-import ptBR from "dayjs/locale/pt-BR";
+import ptBR from "dayjs/locale/pt-br";
 import { getSummary } from "../http/getSummary";
 import { PendingGoals } from "./pendingGoals";
 import { Progress, ProgressIndicator } from "./ui/progressBar";
